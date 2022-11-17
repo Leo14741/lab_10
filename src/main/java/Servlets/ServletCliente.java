@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "Cliente",  urlPatterns = {"/Clientes","/Cliente"})
+@WebServlet(name = "ServletCliente",  urlPatterns = {"/ClienteServlet"})
 public class ServletCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,11 +43,11 @@ public class ServletCliente extends HttpServlet {
             case "buscar":
                 String searchText = request.getParameter("searchText");
 
-                ArrayList<Cliente> lista = daoCliente.buscarPorId(searchText);
+                ArrayList<Cliente> lista = daoCliente.buscarCliente(searchText);
                 request.setAttribute("lista", lista);
                 request.setAttribute("searchText", searchText);
 
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("clientes/lista.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("Cliente/ListarMisContratos.jsp");
                 requestDispatcher.forward(request, response);
                 break;
         }
