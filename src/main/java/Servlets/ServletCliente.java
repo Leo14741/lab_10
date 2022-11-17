@@ -9,26 +9,26 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "ServletCliente", value = "/ServletCliente")
+@WebServlet(name = "Cliente",  urlPatterns = {"/Clientes","/Cliente"})
 public class ServletCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        action = (action == null) ? "listar" : action;
+        action = (action == null) ? "principal" : action;
         RequestDispatcher requestDispatcher;
         ClienteDaos daoClientes = new ClienteDaos();
         ArrayList<Cliente> list = daoClientes.listarClientes();
 
         switch (action){
+            case "principal":
+                requestDispatcher = request.getRequestDispatcher("Cliente/PrincipalCliente.jsp");
+                requestDispatcher.forward(request, response);
             case "listar":
                 request.setAttribute("lista", daoClientes.listarClientes());
 
-                requestDispatcher = request.getRequestDispatcher("clientes/lista.jsp");
+                requestDispatcher = request.getRequestDispatcher("Cliente/ListarMisContratos.jsp");
                 requestDispatcher.forward(request, response);
-            case "crear":
-                requestDispatcher = request.getRequestDispatcher("clientes/formCrear.jsp");
-                requestDispatcher.forward(request,response);
         }
 
     }
