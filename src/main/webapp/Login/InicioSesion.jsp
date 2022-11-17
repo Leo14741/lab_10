@@ -28,22 +28,20 @@
             <div class="card-text">
                 <!--
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
-                <form>
+                <form method="post" action="<%=request.getContextPath()%>/ServletLogin">
                     <!-- to error: add class "has-danger" -->
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" name="inputUsuario" placeholder="Ingrese su Usuario">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-                        <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+                        <input type="password" class="form-control form-control-sm" id="exampleInputPassword1" name="inputPassword" placeholder="Ingrese su Contraseña">
                     </div>
+                    <% if (request.getParameter("error") != null) { %>
+                    <div class="text-danger mb-2">Error en usuario o contraseña</div>
+                    <% } %>
                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-
-                    <div class="sign-up">
-                        Don't have an account? <a href="#">Create One</a>
-                    </div>
                 </form>
             </div>
         </div>
