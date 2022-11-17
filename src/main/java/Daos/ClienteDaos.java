@@ -41,7 +41,7 @@ public class ClienteDaos extends DaoBase{
             return lista;
         }
 
-    public ArrayList<Cliente> buscarPorId(String nroId) {
+    public Cliente buscarPorId(String nroId) {
 
         Cliente cliente = new Cliente();
 
