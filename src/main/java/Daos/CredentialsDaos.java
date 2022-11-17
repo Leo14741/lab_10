@@ -20,7 +20,7 @@ public class CredentialsDaos extends DaoBase{
             try (ResultSet rs = pstmt.executeQuery();) {
                 if(rs.next()){
                     int employeeId = rs.getInt(1);
-                    credentials = this.obtenerEmpleado(employeeId);
+                    //credentials = this.obtenerEmpleado(employeeId);
                 }
             }
 
