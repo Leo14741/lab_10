@@ -6,8 +6,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "CredentialsServlet", value = "/CredentialsServlet")
-public class CredentialsServlet extends HttpServlet {
+@WebServlet(name = "ServletAdministrador", value = "/ServletAdministrador")
+public class ServletAdministrador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
