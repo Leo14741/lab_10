@@ -12,7 +12,7 @@ public class ClienteDaos extends DaoBase{
 
             try (Connection conn = this.getConnection();
                  Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery( "SELECT concat(g4093_name,' ',coalesce(g4093_last_name,'')) as nombreCliente, g4093_age,g4093_type,g4093_documentType,g4093_nro_id,\n" +
+                 ResultSet rs = stmt.executeQuery( "SELECT g4093_name, g4093_age,g4093_type,g4093_documentType,g4093_nro_id,\n" +
                          "\t   case when g4093_type = \"J\" then \"Juridica\"\n" +
                          "\t\t\twhen g4093_type = \"N\" then \"Normal\"\n" +
                          "            end as tipoCliente\n" +
@@ -20,7 +20,7 @@ public class ClienteDaos extends DaoBase{
 
                 while (rs.next()){
                     Cliente cliente = new Cliente();
-                    cliente.setNombreCliente(rs.getString("nombreCliente"));
+                    cliente.setNombreCliente(rs.getString("g4093_name"));
                     cliente.setEdad(rs.getString("g4093_age"));
                     cliente.setTipoCliente(rs.getString("tipoCliente"));
                     cliente.setTipoDocumento(rs.getString("g4093_documentType"));
@@ -37,7 +37,7 @@ public class ClienteDaos extends DaoBase{
 
         Cliente cliente = new Cliente();
 
-        String sql = "SELECT concat(g4093_name,' ',coalesce(g4093_last_name,'')) as nombreCliente, g4093_age,g4093_type,g4093_documentType,g4093_nro_id,\n" +
+        String sql = "SELECT g4093_name, g4093_age,g4093_type,g4093_documentType,g4093_nro_id,\n" +
                 "\t   case when g4093_type = \"J\" then \"Juridica\"\n" +
                 "\t\t\twhen g4093_type = \"N\" then \"Normal\"\n" +
                 "            end as tipoCliente\n" +
@@ -48,7 +48,7 @@ public class ClienteDaos extends DaoBase{
             pstmt.setString(1, nroId);
             try(ResultSet rs = pstmt.executeQuery();){
                 if (rs.next()) {
-                    cliente.setNombreCliente(rs.getString("nombreCliente"));
+                    cliente.setNombreCliente(rs.getString("g4093_name"));
                     cliente.setEdad(rs.getString("g4093_age"));
                     cliente.setTipoCliente(rs.getString("tipoCliente"));
                     cliente.setTipoDocumento(rs.getString("g4093_documentType"));

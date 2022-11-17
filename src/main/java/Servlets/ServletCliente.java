@@ -14,8 +14,7 @@ public class ServletCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String action = request.getParameter("action");
-        action = (action == null) ? "principal" : action;
+        String action = request.getParameter("action") == null ? "principal" : request.getParameter("action");
         RequestDispatcher requestDispatcher;
         ClienteDaos daoClientes = new ClienteDaos();
         ArrayList<Cliente> list = daoClientes.listarClientes();
