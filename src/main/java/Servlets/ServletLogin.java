@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "ServletLogin", value = "/ServletLogin")
+@WebServlet(name = "Login",  urlPatterns = {"/Login", ""})
 public class ServletLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class ServletLogin extends HttpServlet {
 
         switch (action) {
             case "loginform":
-                view = request.getRequestDispatcher("login/InicioSesion.jsp");
+                view = request.getRequestDispatcher("InicioSesion.jsp");
                 view.forward(request, response);
                 break;
         }
