@@ -1,6 +1,8 @@
 package Beans;
 
-public class Cliente {
+import java.util.ArrayList;
+
+public class Cliente extends ArrayList<Cliente> {
     private String nombreCliente;
     private String edad;
     private String tipoCliente;
