@@ -47,7 +47,9 @@ public class ServletCliente extends HttpServlet {
                 request.setAttribute("lista", lista);
                 request.setAttribute("searchText", searchText);
 
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("clientes/lista.jsp");
+                requestDispatcher.forward(request, response);
+                break;
         }
     }
 }
