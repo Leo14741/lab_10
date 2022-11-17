@@ -40,9 +40,9 @@
                         <div style="height: 5px; display: block;"></div>
                         <input type="password" class="form-control form-control-sm" id="exampleInputPassword1" name="inputPassword" placeholder="Put your password">
                     </div>
-                    <% //if (request.getParameter("error") != null) { %>
-                    <!--<div class="text-danger mb-2">Error en usuario o contraseña</div>-->
-                    <% //}%>
+                    <% if (request.getParameter("error") != null) { %>
+                    <div class="text-danger mb-2">Error en usuario o contraseña</div>
+                    <% }%>
                 </form>
                 <div align="center">
                     <button type="submit" align="center" class="btn btn-primary btn-block">Sign in</button>
