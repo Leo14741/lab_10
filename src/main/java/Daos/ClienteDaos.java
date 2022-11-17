@@ -1,7 +1,6 @@
 package Daos;
 
 import Beans.Cliente;
-import jakarta.servlet.RequestDispatcher;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class ClienteDaos extends DaoBase{
             return lista;
         }
 
-    public Cliente buscarPorId(String nroId) {
+    public ArrayList<Cliente> buscarPorId(String nroId) {
 
         Cliente cliente = new Cliente();
 

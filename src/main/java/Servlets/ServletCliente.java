@@ -35,6 +35,19 @@ public class ServletCliente extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
 
+        ClienteDaos daoCliente = new ClienteDaos();
+
+        switch (action){
+            case "buscar":
+                String searchText = request.getParameter("searchText");
+
+                ArrayList<Cliente> lista = daoCliente.buscarPorId(searchText);
+                request.setAttribute("lista", lista);
+                request.setAttribute("searchText", searchText);
+
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        }
     }
 }
