@@ -24,6 +24,11 @@ public class ServletLogin extends HttpServlet {
                 view = request.getRequestDispatcher("InicioSesion.jsp");
                 view.forward(request, response);
                 break;
+            case "logout":
+                HttpSession session = request.getSession();
+                session.invalidate();
+                response.sendRedirect(request.getContextPath());
+                break;
         }
     }
     @Override

@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<jsp:useBean id="usuarioSession" type="Beans.Credentials" scope="session" class="Beans.Credentials"/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,6 +33,7 @@
         <ul id="inline-popups">
             <li class="tm-nav-item" style="font-size: 20px">
                 <a href="${pageContext.request.contextPath}/ClienteServlet?action=misDatos" class="tm-nav-link">
+                    <%//mandar cliente%>
                     Mis Datos
                     <i class="fas fa-3x fa-water"></i>
                 </a>
