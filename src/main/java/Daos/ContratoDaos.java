@@ -19,11 +19,19 @@ public class ContratoDaos extends DaoBase{
 
             while (rs.next()) {
                 Contrato contrato = new Contrato();
+                int estado= rs.getInt("G6789_status");
+                switch (estado){
+                    case 0:
+                        contrato.setEstado("Normal");
+                    case 1:
+                        contrato.setEstado("Cura");
+                    case 2:
+                        contrato.setEstado("Mora");
+                }
 
                 contrato.setNroDeContrato(rs.getString(1));
                 contrato.setIdCliente(rs.getString(2));
                 contrato.setDivisa(rs.getString(3));
-                contrato.setEstado(rs.getString(4));
                 contrato.setMesesEnEseEstado(Integer.parseInt(rs.getString(5)));
 
                 listaDeContratos.add(contrato);
