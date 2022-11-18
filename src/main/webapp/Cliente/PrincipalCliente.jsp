@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="usuarioSession" type="Beans.Credentials" scope="session"/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,8 +19,15 @@
 </head>
 <body>
 <header class="tm-site-header">
-    <h1 class="tm-mt-0 tm-mb-15"><span class="tm-color-primary">El Banco</span> <span class="tm-color-gray-2"> del Perú</span></h1>
-    <em class="tm-tagline tm-color-light-gray">Bienvenido Cliente (Nombre del cliente)</em>
+    <h1 class="tm-mt-0 tm-mb-15">
+        <span class="tm-color-primary">El Banco</span>
+        <span class="tm-color-gray-2"> del Perú</span>
+    </h1>
+    <em class="tm-tagline tm-color-light-gray">
+        Bienvenido Cliente
+
+
+    </em>
 </header>
 <div style="height: 200px; display: block;"></div>
 <div class="tm-container">

@@ -1,7 +1,9 @@
 package Servlets;
 
 import Beans.Cliente;
+import Beans.Credentials;
 import Daos.ClienteDaos;
+import Daos.CredentialsDaos;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -26,22 +28,25 @@ public class ServletLogin extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ClienteDaos clienteDaos = new ClienteDaos();
+        CredentialsDaos credentialsDaos = new CredentialsDaos();
 
         String username = request.getParameter("inputUsuario");
         String password = request.getParameter("inputPassword");
 
-        Cliente cliente = clienteDaos.validarUsuarioPassword(username, password);
+        Credentials credentials = credentialsDaos.validarUsuarioPassword(username,password);
 
-        if(cliente != null){
+        if(credentials != null){
             HttpSession session = request.getSession();
-            session.setAttribute("usuarioSession", cliente);
+            session.setAttribute("usuarioSession", credentials);
 
-            //Validar que sea 1 o 2
+            if(credentials.getTipoUsuario()==1){
+                response.sendRedirect(request.getContextPath() + "/Admin");
+            }else if(credentials.getTipoUsuario()==2){
+                response.sendRedirect(request.getContextPath() + "/ClienteServlet?action=principal");
+            }
 
-            response.sendRedirect(request.getContextPath());
         }else{
-            response.sendRedirect(request.getContextPath() + "/LoginServlet?error");
+            response.sendRedirect(request.getContextPath() + "/Login?error");
         }
 
     }

@@ -84,30 +84,5 @@ public class ClienteDaos extends DaoBase{
         }
     }
 
-    public Cliente validarUsuarioPassword(String username, String password) {
-
-        String sql = "SELECT * FROM employees_credentials WHERE email = ? AND password = ?";
-        Cliente cliente = null;
-        ClienteDaos clienteDaos = new ClienteDaos();
-
-        try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);) {
-
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
-
-            try (ResultSet rs = pstmt.executeQuery();) {
-                if(rs.next()){
-                    int numeroDocumentoCliente = rs.getInt(1);
-                    cliente = clienteDaos.buscarCliente(String.valueOf(numeroDocumentoCliente));
-                }
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-
-        return cliente;
-    }
 }
 
