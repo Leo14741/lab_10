@@ -15,7 +15,7 @@ public class ContratoDaos extends DaoBase{
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery( "SELECT * FROM lab9.partidos;");){
+             ResultSet rs = stmt.executeQuery( "SELECT * FROM bi_corp_business.jm_cotr_bis;");){
 
             while (rs.next()) {
                 Contrato contrato = new Contrato();
