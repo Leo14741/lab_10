@@ -1,7 +1,7 @@
 package Servlets;
 
-import Beans.Credentials;
-import Daos.CredentialsDaos;
+import Beans.Cliente;
+import Daos.ClienteDaos;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -26,16 +26,16 @@ public class ServletLogin extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CredentialsDaos credentialsDaos = new CredentialsDaos();
+        ClienteDaos clienteDaos = new ClienteDaos();
 
         String username = request.getParameter("inputUsuario");
         String password = request.getParameter("inputPassword");
 
-        Credentials credentials = credentialsDaos.validarUsuarioPassword(username, password);
+        Cliente cliente = clienteDaos.validarUsuarioPassword(username, password);
 
-        if(credentials != null){
+        if(cliente != null){
             HttpSession session = request.getSession();
-            session.setAttribute("usuarioSession", credentials);
+            session.setAttribute("usuarioSession", cliente);
 
             //Validar que sea 1 o 2
 
