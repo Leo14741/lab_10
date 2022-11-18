@@ -25,7 +25,6 @@ public class ServletCliente extends HttpServlet {
                 requestDispatcher.forward(request, response);
             case "listar":
                 request.setAttribute("lista", daoClientes.listarClientes());
-
                 requestDispatcher = request.getRequestDispatcher("Cliente/ListarMisContratos.jsp");
                 requestDispatcher.forward(request, response);
         }
