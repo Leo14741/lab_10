@@ -25,13 +25,18 @@ public class ServletCliente extends HttpServlet {
             case "principal":
                 requestDispatcher = request.getRequestDispatcher("Cliente/PrincipalCliente.jsp");
                 requestDispatcher.forward(request, response);
-            case "listar":
-                request.setAttribute("list", daoClientes.listarClientes());
-                requestDispatcher = request.getRequestDispatcher("Cliente/xd.jsp");
-                requestDispatcher.forward(request, response);
             case "listarContratos":
                 request.setAttribute("listContratos", daoContratos.listarContratos());
                 requestDispatcher = request.getRequestDispatcher("Cliente/ListarMisContratos.jsp");
+                requestDispatcher.forward(request, response);
+            case "misDatos":
+                requestDispatcher = request.getRequestDispatcher("Cliente/MisDatos.jsp");
+                requestDispatcher.forward(request, response);
+            case "mostrarCantContrat":
+                requestDispatcher = request.getRequestDispatcher("Cliente/MostrarCantContratos.jsp");
+                requestDispatcher.forward(request, response);
+            case "mostrarMaxEL":
+                requestDispatcher = request.getRequestDispatcher("Cliente/MostrarMaxExpecetedLoss.jsp");
                 requestDispatcher.forward(request, response);
         }
 

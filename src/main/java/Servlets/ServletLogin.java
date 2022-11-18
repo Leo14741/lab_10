@@ -37,6 +37,8 @@ public class ServletLogin extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usuarioSession", credentials);
 
+            //Validar que sea 1 o 2
+
             response.sendRedirect(request.getContextPath());
         }else{
             response.sendRedirect(request.getContextPath() + "/LoginServlet?error");

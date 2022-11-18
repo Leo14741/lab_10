@@ -62,8 +62,6 @@ public class ClienteDaos extends DaoBase{
         return cliente;
     }
 
-
-
     public void crearCredentialCliente(Cliente cliente){
 
 

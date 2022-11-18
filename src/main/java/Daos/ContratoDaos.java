@@ -15,7 +15,7 @@ public class ContratoDaos extends DaoBase{
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery( "SELECT * FROM bi_corp_business.jm_cotr_bis;");){
+             ResultSet rs = stmt.executeQuery( "SELECT * FROM bi_corp_business.jm_cotr_bis WHERE client_nro_id = ?");){
 
             while (rs.next()) {
                 Contrato contrato = new Contrato();
@@ -44,27 +44,39 @@ public class ContratoDaos extends DaoBase{
         return listaDeContratos;
     }
 
-    public ArrayList<cantidadContratosDto> mostrarCantidadContratos(){
-        ArrayList<cantidadContratosDto> lista = new ArrayList<>();
+    public cantidadContratosDto mostrarCantidadContratos(){
+        cantidadContratosDto cantidadContratosDto = new cantidadContratosDto();
 
-        String sql= "";
+        String sql= "SELECT * FROM bi_corp_business.jm_cotr_bis WHERE client_nro_id = ?";
+        // falta mandar el id del cliente
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
+            int contratosEstado0=0;
+            int contratosEstado1=0;
+            int contratosEstado2=0;
+
             while(rs.next()){
-                cantidadContratosDto cant = new cantidadContratosDto();
-                cant.setContratosEstado0(Integer.parseInt(rs.getString(1)));
-                cant.setContratosEstado1(Integer.parseInt(rs.getString(2)));
-                cant.setContratosEstado2(Integer.parseInt(rs.getString(3)));
-                lista.add(cant);
+                if (rs.getString("G6789_status").equals("0")){
+                    contratosEstado0++;
+                } else if (rs.getString("G6789_status").equals("1")) {
+                    contratosEstado1++;
+                } else if (rs.getString("G6789_status").equals("2")) {
+                    contratosEstado2++;
+                }
             }
+
+            cantidadContratosDto.setContratosEstado0(contratosEstado0);
+            cantidadContratosDto.setContratosEstado1(contratosEstado1);
+            cantidadContratosDto.setContratosEstado2(contratosEstado2);
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return lista;
+        return cantidadContratosDto;
 
     }
 
