@@ -20,7 +20,7 @@ public class ServletCliente extends HttpServlet {
         ClienteDaos daoClientes = new ClienteDaos();
         ContratoDaos daoContratos = new ContratoDaos();
         ArrayList<Cliente> list = daoClientes.listarClientes();
-
+        String cliente_id = null;
         switch (action){
             case "principal":
                 requestDispatcher = request.getRequestDispatcher("Cliente/PrincipalCliente.jsp");
@@ -30,6 +30,7 @@ public class ServletCliente extends HttpServlet {
                 requestDispatcher = request.getRequestDispatcher("Cliente/ListarMisContratos.jsp");
                 requestDispatcher.forward(request, response);
             case "misDatos":
+                request.setAttribute("cliente", daoClientes.buscarCliente(cliente_id));
                 requestDispatcher = request.getRequestDispatcher("Cliente/MisDatos.jsp");
                 requestDispatcher.forward(request, response);
             case "mostrarCantContrat":
