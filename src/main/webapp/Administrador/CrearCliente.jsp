@@ -90,7 +90,6 @@
         </div>
         <div class="col-sm-4 col-md-4">
             <select style="border-color: #ced4da">
-                <%=for (Cliente cliente: listaClientes)%>
                 <option selected>---</option>
                 <option value="1">cliente</option>
             </select>
