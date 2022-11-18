@@ -15,7 +15,7 @@ public class ContratoDaos extends DaoBase{
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery( "SELECT * FROM bi_corp_business.jm_cotr_bis WHERE client_nro_id = ?");){
+             ResultSet rs = stmt.executeQuery( "SELECT * FROM bi_corp_business.jm_cotr_bis");){
 
             while (rs.next()) {
                 Contrato contrato = new Contrato();
@@ -23,10 +23,13 @@ public class ContratoDaos extends DaoBase{
                 switch (estado){
                     case 0:
                         contrato.setEstado("Normal");
+                        break;
                     case 1:
                         contrato.setEstado("Cura");
+                        break;
                     case 2:
                         contrato.setEstado("Mora");
+                        break;
                 }
 
                 contrato.setNroDeContrato(rs.getString(1));
