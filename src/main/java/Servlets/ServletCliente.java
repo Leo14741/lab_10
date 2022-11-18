@@ -32,7 +32,7 @@ public class ServletCliente extends HttpServlet {
                 requestDispatcher.forward(request, response);
             case "misDatos":
 
-                request.setAttribute("cliente", daoClientes.buscarCliente());
+                //request.setAttribute("cliente", daoClientes.buscarCliente());
                 requestDispatcher = request.getRequestDispatcher("Cliente/MisDatos.jsp");
                 requestDispatcher.forward(request, response);
             case "mostrarCantContrat":
