@@ -11,7 +11,7 @@ public class ContratoDaos extends DaoBase{
     public ArrayList<Contrato> listarContratos() {
         ArrayList<Contrato> listaDeContratos = new ArrayList<>();
         //DaoSelecciones daoSelecciones = new DaoSelecciones();
-        //DaoArbitros daoArbitros = new DaoArbitros();
+        //DaoArbitros daoArbitros = new DaoArbitros();1
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();

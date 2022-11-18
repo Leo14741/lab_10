@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Beans.Contrato" %><%--
   Created by IntelliJ IDEA.
   User: DANA
   Date: 17/11/2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="lista" scope="request" type="java.util.ArrayList<Beans.Contrato>"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCEAN vibes by TemplateMo</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
-    <link rel="stylesheet" href=".../fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href=".../css/magnific-popup.css">
-    <link rel="stylesheet" href=".../css/templatemo-ocean-vibes.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/templatemo-ocean-vibes.css">
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -38,13 +39,15 @@
                 <th>Estado</th>
                 <th>Meses en el Estado</th>
             </tr>
+            <% for (Contrato contrato: lista){ %>
             <tr style="color: #9E9FA0">
-                <td>Hola</td>
-                <td>Hola</td>
-                <td>Hola</td>
-                <td>Hola</td>
-                <td>Hola</td>
+                <td><%=contrato.getNroDeContrato()%></td>
+                <td><%=contrato.getIdCliente()%></td>
+                <td><%=contrato.getDivisa()%></td>
+                <td><%=contrato.getEstado()%></td>
+                <td><%=contrato.getMesesEnEseEstado()%></td>
             </tr>
+            <% } %>
         </table>
     </div>
     <div class="col-md-1"></div>
