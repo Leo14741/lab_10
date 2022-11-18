@@ -34,6 +34,7 @@ public class ServletCliente extends HttpServlet {
                 requestDispatcher = request.getRequestDispatcher("Cliente/MisDatos.jsp");
                 requestDispatcher.forward(request, response);
             case "mostrarCantContrat":
+                request.setAttribute("cantContratos", daoContratos.mostrarCantidadContratos());
                 requestDispatcher = request.getRequestDispatcher("Cliente/MostrarCantContratos.jsp");
                 requestDispatcher.forward(request, response);
             case "mostrarMaxEL":

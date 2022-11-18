@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Beans.Contrato" %><%--
   Created by IntelliJ IDEA.
   User: DANA
   Date: 17/11/2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="cantContratos" scope="request" type="java.util.ArrayList<Beans.Contrato>"/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +33,7 @@
     <div class="col-md-2 col-sm-2"></div>
     <div class="col-md-4 col-sm-4" style="color: #9E9FA0">
         Cantidad de Contratos en Estado 0
+        <%for(Contrato contrato : cantContratos){} %>
     </div>
     <div class="col-md-4 col-sm-4">
         <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
