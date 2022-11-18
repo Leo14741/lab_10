@@ -2,6 +2,7 @@ package Servlets;
 
 import Beans.Cliente;
 import Daos.ClienteDaos;
+import Daos.ContratoDaos;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -17,6 +18,7 @@ public class ServletCliente extends HttpServlet {
         String action = request.getParameter("action") == null ? "principal" : request.getParameter("action");
         RequestDispatcher requestDispatcher;
         ClienteDaos daoClientes = new ClienteDaos();
+        ContratoDaos daoContratos = new ContratoDaos();
         ArrayList<Cliente> list = daoClientes.listarClientes();
 
         switch (action){
@@ -24,7 +26,11 @@ public class ServletCliente extends HttpServlet {
                 requestDispatcher = request.getRequestDispatcher("Cliente/PrincipalCliente.jsp");
                 requestDispatcher.forward(request, response);
             case "listar":
-                request.setAttribute("lista", daoClientes.listarClientes());
+                request.setAttribute("list", daoClientes.listarClientes());
+                requestDispatcher = request.getRequestDispatcher("Cliente/xd.jsp");
+                requestDispatcher.forward(request, response);
+            case "listarContratos":
+                request.setAttribute("listContratos", daoContratos.listarContratos());
                 requestDispatcher = request.getRequestDispatcher("Cliente/ListarMisContratos.jsp");
                 requestDispatcher.forward(request, response);
         }
