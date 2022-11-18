@@ -42,6 +42,7 @@ public class ServletLogin extends HttpServlet {
             if(credentials.getTipoUsuario()==1){
                 response.sendRedirect(request.getContextPath() + "/Admin");
             }else if(credentials.getTipoUsuario()==2){
+                credentials.getNumeroDocumento();
                 response.sendRedirect(request.getContextPath() + "/ClienteServlet?action=principal");
             }
 

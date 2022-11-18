@@ -1,4 +1,4 @@
-<%--
+<%@ page import="Beans.Cliente" %><%--
   Created by IntelliJ IDEA.
   User: DANA
   Date: 17/11/2022
@@ -6,7 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<jsp:useBean id="client" scope="request" type="java.util.ArrayList<Beans.Cliente>"/>
+<%
+    Cliente cliente = (Cliente) request.getAttribute("cliente");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,30 +35,30 @@
 <div style="margin: 0px 100px 0px 100px">
     <div>
         <p>Nombre del Cliente: </p>
-        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="<%= cliente.getNombreCliente()%>" aria-label="Disabled input example" disabled>
     </div>
     <div style="height: 20px; display: block;"></div>
     <div>
         <p>Edad: </p>
-        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="<%= cliente.getEdad()%>" aria-label="Disabled input example" disabled>
     </div>
     <div style="height: 20px; display: block;"></div>
     <div>
-        <p>Tipo del Cliente</p>
-        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+        <p>Tipo del Cliente: </p>
+        <input class="form-control" type="text" placeholder="<%= cliente.getTipoCliente()%>" aria-label="Disabled input example" disabled>
     </div>
     <div style="height: 20px; display: block;"></div>
     <div>
-        <p>Tipo de Documento</p>
-        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+        <p>Tipo de Documento: </p>
+        <input class="form-control" type="text" placeholder="<%= cliente.getTipoDocumento()%>" aria-label="Disabled input example" disabled>
     </div>
     <div style="height: 20px; display: block;"></div>
     <div>
         <p>Número de Documento Correspondiente: </p>
-        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+        <input class="form-control" type="text" placeholder="<%= cliente.getNumeroDocumento()%>" aria-label="Disabled input example" disabled>
     </div>
-</div>
 
+</div>
 
 </body>
 </html>
