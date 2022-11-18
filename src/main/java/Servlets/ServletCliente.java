@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "ServletCliente",  urlPatterns = {"/ClienteServlet"})
+@WebServlet(name = "ServletCliente",  urlPatterns = {"/ClienteServlet","/Cliente"})
 public class ServletCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
