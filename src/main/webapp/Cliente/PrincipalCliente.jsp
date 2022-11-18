@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="usuarioSession" type="Beans.Credentials" scope="session"/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,8 +24,6 @@
     </h1>
     <em class="tm-tagline tm-color-light-gray">
         Bienvenido Cliente
-
-
     </em>
 </header>
 <div style="height: 200px; display: block;"></div>
@@ -34,25 +31,25 @@
     <nav class="tm-main-nav">
         <ul id="inline-popups">
             <li class="tm-nav-item" style="font-size: 20px">
-                <a class="tm-nav-link">
+                <a href="${pageContext.request.contextPath}/ClienteServlet?action=misDatos" class="tm-nav-link">
                     Mis Datos
                     <i class="fas fa-3x fa-water"></i>
                 </a>
             </li>
             <li class="tm-nav-item">
-                <a class="tm-nav-link" id="tm-gallery-link">
+                <a href="${pageContext.request.contextPath}/ClienteServlet?action=listarContratos" class="tm-nav-link" id="tm-gallery-link">
                     Listar mis Contratos
                     <i class="far fa-3x fa-images"></i>
                 </a>
             </li>
             <li class="tm-nav-item">
-                <a class="tm-nav-link">
+                <a href="${pageContext.request.contextPath}/ClienteServlet?action=mostrarCantContrat" class="tm-nav-link">
                     Mostrar mis Contratos
                     <i class="fas fa-3x fa-tint"></i>
                 </a>
             </li>
             <li class="tm-nav-item">
-                <a class="tm-nav-link">
+                <a href="${pageContext.request.contextPath}/ClienteServlet?action=mostrarMaxEL" class="tm-nav-link">
                     Máximo de Exp. Loss
                     <i class="far fa-3x fa-comments"></i>
                 </a>
